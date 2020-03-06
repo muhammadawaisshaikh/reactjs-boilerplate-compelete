@@ -1,19 +1,31 @@
 import React from 'react';
 
 import {
-  BrowserRouter,
   Route,
   Switch
 } from "react-router-dom";
 
-import AppRoutes from './app/layout/AppRoutes'
+import AppRoutes from './app/layout/AppRoutes';
 
-function App() {
-  const _routes = AppRoutes.registeredRoutes();
+import Main from './app/components/main/MainComponent'
+
+ const _routes = AppRoutes.registeredRoutes();
+ 
+ class App extends React.Component {
+  constructor(props) {
+      super(props);
+
+      this.state = {
+      }
+  }
   
-  return (
-    <div>
-      <BrowserRouter>
+  render() {
+    return (
+      <div>
+        {/* main component  */}
+        <Main />
+
+        {/* routing and navigation  */}
         <Switch>
           {
             _routes.map((item, i) => {
@@ -28,9 +40,9 @@ function App() {
             })
           }
         </Switch>
-      </BrowserRouter>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;

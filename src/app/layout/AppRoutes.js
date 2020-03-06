@@ -16,6 +16,13 @@ const APP_ROUTES = {
         component: Login,
         default: true,
     },
+    login: {
+        path: '/login',
+        protected: false,
+        icon: null,
+        component: Login,
+        default: true,
+    },
     homepage: {
         path: '/homepage',
         protected: false,

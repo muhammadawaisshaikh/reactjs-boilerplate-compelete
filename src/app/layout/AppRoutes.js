@@ -11,20 +11,20 @@ const APP_ROUTES = {
     },
     default: {
         path: '/',
-        protected: false,
         icon: null,
         component: Login,
         default: true,
     },
     login: {
         path: '/login',
+        name: 'Login',
         protected: false,
         icon: null,
-        component: Login,
-        default: true,
+        component: Login
     },
     homepage: {
         path: '/homepage',
+        name: 'Homepage',
         protected: false,
         icon: null,
         component: Homepage

@@ -9,7 +9,7 @@ const APP_ROUTES = {
         icon: null,
         component: NotFoundPage,
     },
-    login: {
+    default: {
         path: '/',
         protected: false,
         icon: null,

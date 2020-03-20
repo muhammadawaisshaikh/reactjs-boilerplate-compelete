@@ -22,10 +22,10 @@ class CoreHttpHandler {
         
         let apiPath = `${this.apiEndpoint}${apiCall.path}`;
 
-        if (apiCall.headers.hasOwnProperty('xt-client-token') && apiCall.headers['xt-client-token'] === null) {
-            apiCall.headers['xt-client-token'] = localStorage.getItem('client_token');
+        if (apiCall.headers.hasOwnProperty('token') && apiCall.headers['token'] === null) {
+            apiCall.headers['token'] = localStorage.getItem('client_token');
 
-            if (apiCall.headers['xt-client-token'] === null) throw new Error(`Cannot call remote service without authentication token`);
+            if (apiCall.headers['token'] === null) throw new Error(`Cannot call remote service without authentication token`);
         }
 
         const _config = { headers: { ...apiCall.headers } };

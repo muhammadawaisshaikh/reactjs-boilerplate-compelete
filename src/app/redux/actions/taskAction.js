@@ -33,13 +33,36 @@ export const AddUser = (params) => {
     
     return dispatch => {
         console.log("Add User dispatch");
-
-        // let params = {
-        //     "name": "muhammad awais",
-        //     "job": "developer"
-        // }
     
         CoreHttpService.request('users', 'add_user', params, (response) => {
+            console.log(response);
+
+            // dispatch the updated users to update store
+            CoreHttpService.request('users', 'listing', params, (response) => {
+                console.log(response);
+    
+                dispatch({
+                    type: GET_USERS,
+                    users: response
+                });
+        
+            }, (error) => {
+                console.log(error);
+            });
+    
+        }, (error) => {
+            console.log(error);
+        });
+    };
+};
+
+export const UpdateUser = (params) => {
+    console.log("UpdateUser");
+    
+    return dispatch => {
+        console.log("Update User dispatch");
+    
+        CoreHttpService.request('users', 'update_user', params, (response) => {
             console.log(response);
 
             // dispatch the updated users to update store

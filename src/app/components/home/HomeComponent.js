@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import CoreHttpService from '../../core/config/CoreHttpHandler';
-import { AddUser } from "../../redux/actions/taskAction";
+import { AddUser, UpdateUser } from "../../redux/actions/taskAction";
 
 class Home extends React.Component {
 
@@ -40,18 +40,6 @@ class Home extends React.Component {
         });
     }
 
-    // creating new user using Redux-Thunk
-    addNewUser = () => {
-        let data = {
-            "name": "muhammad awais",
-            "job": "developer"
-        }
-
-        this.props.submit(
-            data
-        );
-    }
-
     // getting a single user
     getUser = () => {
         let params = {
@@ -84,7 +72,7 @@ class Home extends React.Component {
         }, (error) => {
             console.log(error);
         });
-    } 
+    }
 
     // delete a user
     deleteUser = () => {
@@ -99,6 +87,34 @@ class Home extends React.Component {
         }, (error) => {
             console.log(error);
         });
+    }
+
+    // creating new user using Redux-Thunk
+    addNewUser = () => {
+        let data = {
+            "name": "muhammad awais",
+            "job": "developer"
+        }
+
+        this.props.submit(
+            data
+        );
+    }
+
+    // update a user using Redux-Thunk
+    updateTheUser = () => {
+        let params = {
+            "key": 'id',
+            "value": 1,
+            params: {
+                "name": "xyz user",
+                "job": "xyz job"
+            }
+        }
+
+        this.props.update(
+            params
+        );
     }
 
     render() {
@@ -128,6 +144,7 @@ class Home extends React.Component {
                     </div>
                     <div>
                         <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.addNewUser}>add user using redux-thunk</a>
+                        <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.updateTheUser}>update user using redux-thunk</a>
                     </div>
                 </div>
             </div>
@@ -143,6 +160,9 @@ const mapDispacthToProps = dispatch => {
     return {
         submit: (data) => {
             dispatch(AddUser(data))
+        },
+        update: (data) => {
+            dispatch(UpdateUser(data))
         }
     };
 };

@@ -5,6 +5,12 @@ import {
   Switch
 } from "react-router-dom";
 
+import { connect } from "react-redux";
+
+import {
+  GetUsers
+} from "./app/redux/actions/taskAction";
+
 import AppRoutes from './app/layout/AppRoutes';
 
 import Main from './app/components/main/MainComponent'
@@ -12,14 +18,23 @@ import Main from './app/components/main/MainComponent'
  const _routes = AppRoutes.registeredRoutes();
  
  class App extends React.Component {
+
   constructor(props) {
       super(props);
 
       this.state = {
       }
   }
+
+  componentDidMount() {
+    this.props.GetUsers();
+    
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+  }
   
   render() {
+    console.log("this.props.tasksss ", this.props.Loading);
     return (
       <div>
         {/* main component  */}
@@ -45,4 +60,16 @@ import Main from './app/components/main/MainComponent'
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  Loading: state.task.loading
+});
+const mapDispacthToProps = dispatch => {
+  return {
+    GetUsers: () => dispatch(GetUsers())    
+  };
+  
+};
+export default connect(
+  mapStateToProps,
+  mapDispacthToProps
+)(App);

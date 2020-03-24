@@ -102,28 +102,41 @@ class Home extends React.Component {
     }
 
     render() {
+        console.log("this.props.Users : ",this.props.Users);
+        
         return (
             <div>
-                <span>Home Component</span>
-                <br /><br />
-                <a onClick={this.getUsers}>get users</a>
-                <br />
-                <a onClick={this.addUser}>add user</a>
-                <br />
-                <a onClick={this.addNewUser}>add user using redux-thunk</a>
-                <br />
-                <a onClick={this.getUser}>get user</a>
-                <br />
-                <a onClick={this.updateUser}>update user</a>
-                <br />
-                <a onClick={this.deleteUser}>delete user</a>
+                <div className="jumbotron jumbotron-fluid">
+                    <div className="container">
+                        <h1 className="display-4">Home Component</h1>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="alert alert-secondary" role="alert">
+                        <b>Normal</b> Http API Calls
+                    </div>
+                    <div>
+                        <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.getUsers}>get users</a>
+                        <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.addUser}>add user</a>
+                        <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.getUser}>get user</a>
+                        <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.updateUser}>update user</a>
+                        <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.deleteUser}>delete user</a>
+                    </div>
+
+                    <div className="alert alert-success mt-5" role="alert">
+                        <b>Redux-Thunk</b> Http API Calls
+                    </div>
+                    <div>
+                        <a className="btn btn-primary mx-2" href="#" role="button" onClick={this.addNewUser}>add user using redux-thunk</a>
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
-    categories: state.task.Categories
+    Users: state.task.Users
 });
 
 const mapDispacthToProps = dispatch => {

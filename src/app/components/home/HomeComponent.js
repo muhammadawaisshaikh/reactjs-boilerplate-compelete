@@ -119,6 +119,7 @@ class Home extends React.Component {
 
     render() {
         console.log("this.props.Users : ",this.props.Users);
+        console.log("this.props.Products : ",this.props.Products);
         
         return (
             <div>
@@ -153,7 +154,8 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    Users: state.task.Users
+    Users: state.task.Users,
+    Products: state.task.Products
 });
 
 const mapDispacthToProps = dispatch => {

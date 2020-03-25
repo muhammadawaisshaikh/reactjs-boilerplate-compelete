@@ -1,5 +1,6 @@
 import { 
     GET_USERS,
+    GET_PRODUCTS
   } from "../actions/actions";
   
   const INITIAL_STATE = {
@@ -15,6 +16,13 @@ import {
         return {
           ...state,
           Users: action.users,
+          loading: false
+        };
+      }
+      case GET_PRODUCTS: {
+        return {
+          ...state,
+          Products: action.products,
           loading: false
         };
       }

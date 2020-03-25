@@ -1,5 +1,6 @@
 import {
     GET_USERS,
+    GET_PRODUCTS,
   } from "./actions";
 
 import CoreHttpService from '../../core/config/CoreHttpHandler';
@@ -81,5 +82,29 @@ export const UpdateUser = (params) => {
         }, (error) => {
             console.log(error);
         });
+    };
+};
+
+export const GetProducts = () => {
+    console.log("GetProducts");
+    
+    return dispatch => {
+        console.log("GetProducts dispatch");
+
+        fetch("https://jsonplaceholder.typicode.com/todos/")
+        .then(res => res.json())
+        .then(
+            (result) => {
+                console.log(result);
+                
+                dispatch({
+                    type: GET_PRODUCTS,
+                    products: result
+                });
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
     };
 };

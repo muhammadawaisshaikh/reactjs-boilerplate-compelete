@@ -8,7 +8,8 @@ import {
 import { connect } from "react-redux";
 
 import {
-  GetUsers
+  GetUsers,
+  GetProducts
 } from "./app/redux/actions/taskAction";
 
 import AppRoutes from './app/layout/AppRoutes';
@@ -28,6 +29,7 @@ import Main from './app/components/main/MainComponent'
 
   componentDidMount() {
     this.props.GetUsers();
+    this.props.GetProducts();
     
     // do stuff while splash screen is shown
     // After having done stuff (such as async tasks) hide the splash screen
@@ -66,7 +68,8 @@ const mapStateToProps = state => ({
 
 const mapDispacthToProps = dispatch => {
   return {
-    GetUsers: () => dispatch(GetUsers())    
+    GetUsers: () => dispatch(GetUsers()),   
+    GetProducts: () => dispatch(GetProducts())    
   };
   
 };
